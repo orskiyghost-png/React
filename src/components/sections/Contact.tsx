@@ -1,4 +1,5 @@
 import { profile, socials } from "../../data/site";
+import { ScrollFloat } from "../reactbits/ScrollFloat";
 import "./contact.css";
 
 export function Contact() {
@@ -13,8 +14,18 @@ export function Contact() {
           <p className="contact__kicker label">Есть проект или вопрос</p>
         </div>
 
-        <a className="contact__mail" data-reveal href={`mailto:${profile.email}`}>
-          {profile.email}
+        <a className="contact__mail" href={`mailto:${profile.email}`}>
+          <ScrollFloat
+            as="span"
+            effect="blur"
+            splitBy="chars"
+            scrollStart="center 95%"
+            scrollEnd="center 60%"
+            stagger={0.015}
+            distance={80}
+          >
+            {profile.email}
+          </ScrollFloat>
         </a>
 
         <div className="contact__grid">

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ScrollReveal } from "../reactbits/ScrollReveal";
 
 type SectionHeadingProps = {
   index: string;
@@ -8,10 +9,17 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ index, title, lede }: SectionHeadingProps) {
   return (
-    <div className="section__head" data-reveal>
+    <div className="section__head">
       <p className="section__index">({index})</p>
       <div>
-        <h2 className="section__title">{title}</h2>
+        <ScrollReveal
+          effect="flip"
+          mode="enter"
+          splitBy="words"
+          containerClassName="section__title"
+        >
+          {title}
+        </ScrollReveal>
         {lede ? <p className="section__lede">{lede}</p> : null}
       </div>
     </div>

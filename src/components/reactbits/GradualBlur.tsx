@@ -270,4 +270,6 @@ const GradualBlur = ({
   );
 };
 
+export { GradualBlur };
+
 export default GradualBlur;

@@ -1,0 +1,137 @@
+/*
+ * Адаптация ReactBits под дизайн-систему проекта.
+ * Источник токенов: /design/tokens.md.
+ * Селекторы .sm-scope .site-menu … перекрывают <style> внутри компонента.
+ */
+
+/* Базовые классы для текстовых анимаций */
+.rb-scroll,
+.rb-reveal {
+  margin: 0;
+}
+
+.rb-row {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.rb-piece {
+  display: inline-block;
+}
+
+.rb-text {
+  display: inline-block;
+}
+
+/* StaggeredMenu: позиционирование без Tailwind */
+.sm-scope.sm-scope--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 140;
+}
+
+.sm-scope.sm-scope--inline {
+  width: 100%;
+  height: 100%;
+}
+
+.sm-scope .staggered-menu-panel {
+  pointer-events: auto;
+}
+
+/* StaggeredMenu: интеграция в шапку сайта */
+.sm-scope .site-menu .staggered-menu-header {
+  top: 0;
+  height: 64px;
+  padding: 0 var(--page-gutter);
+  justify-content: flex-end;
+}
+
+.sm-scope .site-menu .sm-logo {
+  display: none;
+}
+
+.sm-scope .site-menu .staggered-menu-panel,
+.sm-scope .site-menu .sm-prelayers {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.sm-scope .site-menu .staggered-menu-panel {
+  background: var(--color-primary);
+  padding: calc(64px + 1.5em) var(--page-gutter) var(--space-12);
+}
+
+.sm-scope .site-menu .sm-toggle {
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sm-scope .site-menu .sm-toggle:focus-visible {
+  outline-color: var(--color-focus);
+}
+
+.sm-scope .site-menu .sm-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.sm-scope .site-menu .sm-panel-item {
+  color: var(--color-background);
+  font-size: clamp(2rem, 9vw, 3.5rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+  padding-right: 1.8em;
+}
+
+.sm-scope .site-menu .sm-panel-item:hover {
+  color: var(--color-background);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+.sm-scope .site-menu .sm-panel-list[data-numbering] .sm-panel-item::after {
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
+  color: var(--color-background);
+  top: 0.2em;
+  right: 0.2em;
+}
+
+.sm-scope .site-menu .sm-socials-title {
+  color: var(--color-background);
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sm-scope .site-menu .sm-socials-link {
+  color: var(--color-background);
+  font-size: var(--text-body);
+}
+
+.sm-scope .site-menu .sm-socials-link:hover {
+  color: var(--color-background);
+  opacity: 0.6;
+}
+
+/* Меню включается только на мобильных: на десктопе работает навигация в шапке */
+@media (min-width: 781px) {
+  .sm-scope .site-menu {
+    display: none;
+  }
+}
+
+/* GradualBlur только сверху, чтобы контент не сливался с шапкой */
+.gradual-blur-top {
+  z-index: 90;
+  pointer-events: none;
+}

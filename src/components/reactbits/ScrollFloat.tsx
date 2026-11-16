@@ -29,6 +29,7 @@ interface ScrollFloatProps {
   containerClassName?: string;
   textClassName?: string;
   as?: React.ElementType;
+  id?: string;
   effect?: ScrollFloatEffect;
   splitBy?: ScrollFloatSplit;
   direction?: ScrollFloatDirection;
@@ -84,6 +85,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   textClassName = '',
   effect = 'float',
   as,
+  id,
   splitBy = 'chars',
   direction = 'up',
   order = 'start',
@@ -279,6 +281,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   return (
     <Root
       ref={containerRef}
+      id={id}
       className={`rb-scroll ${effect === 'float' ? 'rb-scroll--float' : ''} ${containerClassName}`}
     >
       {text !== null && <span className="visually-hidden">{text}</span>}
@@ -293,5 +296,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
     </Root>
   );
 };
+
+export { ScrollFloat };
 
 export default ScrollFloat;

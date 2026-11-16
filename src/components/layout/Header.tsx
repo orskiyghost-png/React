@@ -1,6 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { navItems, profile, socials } from "../../data/site";
+import { StaggeredMenu } from "../reactbits/StaggeredMenu";
 import "./header.css";
+
+const menuItems = navItems.map((item) => ({
+  label: item.label,
+  ariaLabel: item.label,
+  link: item.href,
+}));
+
+const menuSocials = socials.map((social) => ({
+  label: social.label,
+  link: social.href,
+}));
 
 function LogoMark() {
   return (
@@ -23,10 +35,8 @@ function LogoMark() {
 }
 
 export function Header() {
-  const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const stateRef = useRef({ open: false });
 
   useEffect(() => {
     const ids = navItems.map((item) => item.href.replace("#", ""));
@@ -51,123 +61,112 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!open) return;
-
-    document.body.style.overflow = "hidden";
-    panelRef.current?.querySelector("a")?.focus();
-
+  const lockPage = useCallback((open: boolean) => {
+    stateRef.current.open = open;
+    document.body.style.overflow = open ? "hidden" : "";
     const main = document.getElementById("main");
     const footer = document.querySelector("footer");
-    main?.setAttribute("inert", "");
-    footer?.setAttribute("inert", "");
-
-    return () => {
-      document.body.style.overflow = "";
+    if (open) {
+      main?.setAttribute("inert", "");
+      footer?.setAttribute("inert", "");
+    } else {
       main?.removeAttribute("inert");
       footer?.removeAttribute("inert");
-    };
-  }, [open]);
+    }
+  }, []);
+
+  const handleMenuOpen = useCallback(() => {
+    lockPage(true);
+    requestAnimationFrame(() => {
+      document
+        .querySelector<HTMLElement>(".site-menu .sm-panel-item")
+        ?.focus();
+    });
+  }, [lockPage]);
+
+  const handleMenuClose = useCallback(() => {
+    lockPage(false);
+    document
+      .querySelector<HTMLElement>(".site-menu .sm-toggle")
+      ?.focus({ preventScroll: true });
+  }, [lockPage]);
 
   useEffect(() => {
-    if (!open) return;
+    return () => lockPage(false);
+  }, [lockPage]);
 
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
-      setOpen(false);
-      toggleRef.current?.focus();
+      const toggle = document.querySelector<HTMLElement>(".site-menu .sm-toggle");
+      if (toggle?.getAttribute("aria-expanded") === "true") toggle.click();
+    };
+
+    const onClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      if (!event.target.closest(".site-menu .sm-panel-item")) return;
+      const toggle = document.querySelector<HTMLElement>(".site-menu .sm-toggle");
+      if (toggle?.getAttribute("aria-expanded") === "true") toggle.click();
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+    document.addEventListener("click", onClick);
 
-  const close = () => setOpen(false);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
 
   return (
-    <header className={`header${open ? " header--open" : ""}`}>
-      <div className="shell header__bar">
-        <a className="header__brand" href="#top" onClick={close}>
-          <LogoMark />
-          <span className="header__wordmark">React</span>
-        </a>
-
-        <nav className="header__nav" aria-label="Основная навигация">
-          <ul className="header__list">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  className="header__link"
-                  href={item.href}
-                  aria-current={
-                    activeId === item.href.replace("#", "") ? "location" : undefined
-                  }
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <a className="header__contact" href={`mailto:${profile.email}`}>
-          Написать
-        </a>
-
-        <button
-          ref={toggleRef}
-          className="header__toggle"
-          type="button"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Закрыть меню" : "Открыть меню"}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="header__toggle-line" />
-          <span className="header__toggle-line" />
-        </button>
-      </div>
-
-      <div className="header__panel" id="mobile-menu" hidden={!open} ref={panelRef}>
-        <nav aria-label="Мобильная навигация">
-          <ul className="header__panel-list">
-            {navItems.map((item, index) => (
-              <li key={item.href} className="header__panel-item">
-                <span className="header__panel-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <a className="header__panel-link" href={item.href} onClick={close}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="header__panel-foot">
-          <a
-            className="header__panel-mail"
-            href={`mailto:${profile.email}`}
-            onClick={close}
-          >
-            {profile.email}
+    <>
+      <header className="header">
+        <div className="shell header__bar">
+          <a className="header__brand" href="#top">
+            <LogoMark />
+            <span className="header__wordmark">React</span>
           </a>
 
-          <ul className="header__panel-socials">
-            {socials.map((social) => (
-              <li key={social.label}>
-                <a
-                  className="header__panel-social"
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {social.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <nav className="header__nav" aria-label="Основная навигация">
+            <ul className="header__list">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    className="header__link"
+                    href={item.href}
+                    aria-current={
+                      activeId === item.href.replace("#", "") ? "location" : undefined
+                    }
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <a className="header__contact" href={`mailto:${profile.email}`}>
+            Написать
+          </a>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <StaggeredMenu
+        className="site-menu"
+        isFixed
+        position="right"
+        items={menuItems}
+        socialItems={menuSocials}
+        colors={["#EF3347", "#C12836", "#8F1B29"]}
+        accentColor="#EF3347"
+        menuButtonColor="#EF3347"
+        openMenuButtonColor="#FFF5F5"
+        changeMenuColorOnOpen={true}
+        displaySocials
+        displayItemNumbering
+        onMenuOpen={handleMenuOpen}
+        onMenuClose={handleMenuClose}
+      />
+    </>
   );
 }

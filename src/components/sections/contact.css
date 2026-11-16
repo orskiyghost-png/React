@@ -16,9 +16,8 @@
   line-height: 0.95;
   letter-spacing: -0.04em;
   overflow-wrap: anywhere;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: clamp(6px, 1vw, 14px);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: clamp(6px, 1vw, 14px);
   transition: opacity var(--duration-base) var(--ease-out);
 }
 

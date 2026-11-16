@@ -349,4 +349,6 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   );
 };
 
+export { ScrollReveal };
+
 export default ScrollReveal;
