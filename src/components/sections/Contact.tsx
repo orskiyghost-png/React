@@ -13,7 +13,7 @@ export function Contact() {
           <p className="contact__kicker label">Есть проект или вопрос</p>
         </div>
 
-        <a className="contact__mail" href={`mailto:${profile.email}`}>
+        <a className="contact__mail" data-reveal href={`mailto:${profile.email}`}>
           {profile.email}
         </a>
 

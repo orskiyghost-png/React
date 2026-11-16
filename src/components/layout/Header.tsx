@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { navItems, profile } from "../../data/site";
+import { useEffect, useRef, useState } from "react";
+import { navItems, profile, socials } from "../../data/site";
 import "./header.css";
 
 function LogoMark() {
@@ -24,22 +24,62 @@ function LogoMark() {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ids = navItems.map((item) => item.href.replace("#", ""));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (sections.length === 0 || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) setActiveId(visible.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+
+    for (const section of sections) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    document.body.style.overflow = "hidden";
+    panelRef.current?.querySelector("a")?.focus();
+
+    const main = document.getElementById("main");
+    const footer = document.querySelector("footer");
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+
+    return () => {
+      document.body.style.overflow = "";
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      toggleRef.current?.focus();
     };
-    const previousOverflow = document.body.style.overflow;
 
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   const close = () => setOpen(false);
@@ -56,7 +96,13 @@ export function Header() {
           <ul className="header__list">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a className="header__link" href={item.href}>
+                <a
+                  className="header__link"
+                  href={item.href}
+                  aria-current={
+                    activeId === item.href.replace("#", "") ? "location" : undefined
+                  }
+                >
                   {item.label}
                 </a>
               </li>
@@ -69,6 +115,7 @@ export function Header() {
         </a>
 
         <button
+          ref={toggleRef}
           className="header__toggle"
           type="button"
           aria-expanded={open}
@@ -81,7 +128,7 @@ export function Header() {
         </button>
       </div>
 
-      <div className="header__panel" id="mobile-menu" hidden={!open}>
+      <div className="header__panel" id="mobile-menu" hidden={!open} ref={panelRef}>
         <nav aria-label="Мобильная навигация">
           <ul className="header__panel-list">
             {navItems.map((item, index) => (
@@ -96,13 +143,30 @@ export function Header() {
             ))}
           </ul>
         </nav>
-        <a
-          className="header__panel-mail"
-          href={`mailto:${profile.email}`}
-          onClick={close}
-        >
-          {profile.email}
-        </a>
+        <div className="header__panel-foot">
+          <a
+            className="header__panel-mail"
+            href={`mailto:${profile.email}`}
+            onClick={close}
+          >
+            {profile.email}
+          </a>
+
+          <ul className="header__panel-socials">
+            {socials.map((social) => (
+              <li key={social.label}>
+                <a
+                  className="header__panel-social"
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {social.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </header>
   );

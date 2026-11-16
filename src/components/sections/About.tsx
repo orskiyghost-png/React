@@ -13,14 +13,14 @@ export function About() {
         />
 
         <div className="about__grid">
-          <div className="about__text">
+          <div className="about__text" data-reveal>
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
             <p className="about__signature">{profile.name}</p>
           </div>
 
-          <dl className="about__facts">
+          <dl className="about__facts" data-reveal>
             {about.facts.map((fact) => (
               <div className="about__fact" key={fact.term}>
                 <dt className="label">{fact.term}</dt>

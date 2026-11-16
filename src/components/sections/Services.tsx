@@ -14,7 +14,7 @@ export function Services() {
 
         <div className="services__list">
           {services.map((service, index) => (
-            <article className="service" key={service.title}>
+            <article className="service" key={service.title} data-reveal>
               <span className="service__index">
                 {String(index + 1).padStart(2, "0")}
               </span>

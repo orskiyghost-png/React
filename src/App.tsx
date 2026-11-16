@@ -5,8 +5,11 @@ import { Contact } from "./components/sections/Contact";
 import { Hero } from "./components/sections/Hero";
 import { SelectedWork } from "./components/sections/SelectedWork";
 import { Services } from "./components/sections/Services";
+import { useReveal } from "./lib/useReveal";
 
 export default function App() {
+  useReveal();
+
   return (
     <>
       <a className="skip-link" href="#main">

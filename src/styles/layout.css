@@ -48,24 +48,6 @@
   line-height: var(--leading-normal);
 }
 
-.rule {
-  border: 0;
-  border-top: var(--rule);
-  margin: 0;
-}
-
-.link {
-  display: inline-block;
-  position: relative;
-  padding-bottom: 2px;
-  border-bottom: 1px solid currentColor;
-  transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.link:hover {
-  opacity: 0.6;
-}
-
 .label {
   font-size: var(--text-caption);
   letter-spacing: 0.14em;

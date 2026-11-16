@@ -8,7 +8,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ index, title, lede }: SectionHeadingProps) {
   return (
-    <div className="section__head">
+    <div className="section__head" data-reveal>
       <p className="section__index">({index})</p>
       <div>
         <h2 className="section__title">{title}</h2>

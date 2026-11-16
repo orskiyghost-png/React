@@ -8,7 +8,7 @@ type ProjectTileProps = {
 
 export function ProjectTile({ project, variant }: ProjectTileProps) {
   return (
-    <a className={`tile tile--${variant}`} href={project.href}>
+    <a className={`tile tile--${variant}`} href={project.href} data-reveal>
       <figure className="tile__media">
         <img
           src={project.image}
