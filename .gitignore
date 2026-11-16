@@ -9,3 +9,6 @@ dist-ssr
 .idea
 .vscode/*
 !.vscode/extensions.json
+
+# build info
+*.tsbuildinfo
