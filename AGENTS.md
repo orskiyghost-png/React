@@ -1,24 +1,125 @@
-# AGENTS
+AGENT INSTRUCTIONS — REACT
 
-Правила работы над проектом. Читать перед любой задачей.
+Project: React
+Stack: React + TypeScript + Vite
 
-## Репозиторий
+This file contains the main development rules for the project.
 
-- Основной репозиторий: https://github.com/orskiyghost-png/React
-- Ветка по умолчанию: `main`, удалённый репозиторий: `origin`.
-- Любое изменение фиксируется коммитом и отправляется в `origin`. Не оставлять работу только локально.
+1. MAIN RULE
 
-## Коммуникация
+Before implementing a task, identify which documentation files are relevant.
 
-- Отвечать по-русски.
-- Ссылаться на файлы полными путями.
-- Комментарии, коммиты, документация — на русском языке, если не указано иное.
+Do NOT read every documentation file for every task.
 
-## Документация
+Read only the files required for the current task.
 
-- `DESIGN.md` — общее описание дизайн-системы.
-- `TOKENS.md` — дизайн-токены.
-- `COMPONENTS.md` — библиотека компонентов.
-- `MOTIONS.md` — анимации и переходы.
-- `PERFORMANCE.md` — производительность.
-- `INTEGRATION.md` — интеграция и сборка.
+2. DOCUMENTATION ROUTING
+
+Documentation is stored in /design/.
+
+Task	Required documentation
+Colors, fonts, typography, spacing	design/tokens.md
+Buttons, cards, menus, UI elements	design/tokens.md, design/components.md
+New or replacement components	design/tokens.md, design/components.md, design/integrations.md
+GSAP animations	design/motion.md, design/performance.md
+Lenis scrolling	design/motion.md, design/performance.md
+ReactBits components	design/tokens.md, design/components.md, design/integrations.md
+npm packages	design/integrations.md
+Performance optimization	design/performance.md
+Responsive design	design/tokens.md, design/performance.md
+General development	Read only the relevant sections
+
+If a task affects multiple areas, read all relevant documents.
+
+3. TOKEN EFFICIENCY
+
+* Never load all design documentation by default.
+* Never repeatedly reread unchanged documentation during the same task.
+* Do not reproduce documentation in your reasoning or responses.
+* Do not copy entire documentation files into prompts or source code.
+* Read only the relevant documentation.
+* Keep documentation concise and avoid duplication.
+* Follow existing project architecture.
+
+4. DESIGN AUTHORITY
+
+The documentation has the following priority:
+
+1. User’s explicit instructions.
+2. design/tokens.md — brand identity.
+3. design/components.md — interface rules.
+4. design/motion.md — animation rules.
+5. design/performance.md — technical performance.
+6. design/integrations.md — external packages and components.
+
+Do not independently invent a new design system.
+
+5. AUTONOMOUS DEVELOPMENT
+
+When the user provides a component name, npm package, URL, GitHub repository, ReactBits component or visual reference:
+
+* Identify the requested component.
+* Inspect its official documentation.
+* Check compatibility and dependencies.
+* Retrieve or install the component.
+* Adapt it to the existing design system.
+* Integrate it at the exact location requested.
+* Replace existing components when explicitly requested.
+* Preserve existing functionality.
+* Test the result.
+
+Do not stop after explaining how the user could install something.
+
+Perform the implementation yourself when the required tools and permissions are available.
+
+6. REPLACEMENT RULES
+
+Follow the exact scope of the user’s request.
+
+Examples:
+
+* “Replace all buttons” means all applicable buttons across the application.
+* “Replace the Hero button” means only the Hero button.
+* “Replace all project cards” means all applicable project cards.
+* “Add this animation to the title” means only the specified title.
+
+Inspect every affected instance.
+
+Preserve existing click handlers, navigation, accessibility, loading states and business logic.
+
+7. PROJECT SAFETY
+
+* Do not rewrite working architecture unnecessarily.
+* Do not delete unrelated files.
+* Do not modify production settings without permission.
+* Do not expose secrets.
+* Do not install suspicious dependencies.
+* Do not deploy to production without explicit permission.
+
+8. VALIDATION
+
+After implementation:
+
+* Run available TypeScript checks.
+* Run npm run build.
+* Fix errors caused by your changes.
+* Verify affected components.
+* Verify responsive behavior.
+* Verify animation cleanup when applicable.
+
+Report:
+
+* What changed.
+* Which files changed.
+* Which packages were installed.
+* Whether the build passed.
+
+9. FINAL RULE
+
+Work autonomously.
+
+The user describes the desired result, not the implementation steps.
+
+Inspect, decide, implement, adapt, test and report.
+
+Do not ask the user to perform manual installation or code editing when you can complete it yourself.
