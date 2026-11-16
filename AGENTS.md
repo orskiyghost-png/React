@@ -3,47 +3,38 @@ AGENT INSTRUCTIONS — REACT
 Project: React
 Stack: React + TypeScript + Vite
 
-This file contains the main development rules for the project.
-
 1. MAIN RULE
 
-Before implementing a task, identify which documentation files are relevant.
+Before a task, identify which documents it needs. Read only those.
+All documentation lives in /design/ and nowhere else.
 
-Do NOT read every documentation file for every task.
-
-Read only the files required for the current task.
+* Never load all design documentation by default.
+* Never reread unchanged documentation during the same task.
+* Do not reproduce documentation in reasoning or responses.
+* Do not copy whole documentation files into prompts or source code.
+* Keep documentation concise and free of duplication.
+* Follow existing project architecture.
 
 2. DOCUMENTATION ROUTING
 
-Documentation is stored in /design/.
+| Task | Read |
+| --- | --- |
+| Colors, fonts, typography, spacing | design/tokens.md |
+| Buttons, cards, menus, UI elements | design/tokens.md, design/components.md |
+| New or replacement components | design/tokens.md, design/components.md, design/integrations.md |
+| GSAP animations | design/motion.md, design/performance.md |
+| Lenis scrolling | design/motion.md, design/performance.md |
+| ReactBits components | design/tokens.md, design/components.md, design/integrations.md |
+| npm packages | design/integrations.md |
+| Performance optimization | design/performance.md |
+| Responsive design | design/tokens.md, design/performance.md |
+| General development | relevant sections only |
 
-Task	Required documentation
-Colors, fonts, typography, spacing	design/tokens.md
-Buttons, cards, menus, UI elements	design/tokens.md, design/components.md
-New or replacement components	design/tokens.md, design/components.md, design/integrations.md
-GSAP animations	design/motion.md, design/performance.md
-Lenis scrolling	design/motion.md, design/performance.md
-ReactBits components	design/tokens.md, design/components.md, design/integrations.md
-npm packages	design/integrations.md
-Performance optimization	design/performance.md
-Responsive design	design/tokens.md, design/performance.md
-General development	Read only the relevant sections
+A task that spans areas reads all documents for those areas.
 
-If a task affects multiple areas, read all relevant documents.
+3. DESIGN AUTHORITY
 
-3. TOKEN EFFICIENCY
-
-* Never load all design documentation by default.
-* Never repeatedly reread unchanged documentation during the same task.
-* Do not reproduce documentation in your reasoning or responses.
-* Do not copy entire documentation files into prompts or source code.
-* Read only the relevant documentation.
-* Keep documentation concise and avoid duplication.
-* Follow existing project architecture.
-
-4. DESIGN AUTHORITY
-
-The documentation has the following priority:
+Priority order:
 
 1. User’s explicit instructions.
 2. design/tokens.md — brand identity.
@@ -54,7 +45,7 @@ The documentation has the following priority:
 
 Do not independently invent a new design system.
 
-5. AUTONOMOUS DEVELOPMENT
+4. AUTONOMOUS DEVELOPMENT
 
 When the user provides a component name, npm package, URL, GitHub repository, ReactBits component or visual reference:
 
@@ -72,7 +63,7 @@ Do not stop after explaining how the user could install something.
 
 Perform the implementation yourself when the required tools and permissions are available.
 
-6. REPLACEMENT RULES
+5. REPLACEMENT RULES
 
 Follow the exact scope of the user’s request.
 
@@ -87,7 +78,7 @@ Inspect every affected instance.
 
 Preserve existing click handlers, navigation, accessibility, loading states and business logic.
 
-7. PROJECT SAFETY
+6. PROJECT SAFETY
 
 * Do not rewrite working architecture unnecessarily.
 * Do not delete unrelated files.
@@ -96,7 +87,7 @@ Preserve existing click handlers, navigation, accessibility, loading states and 
 * Do not install suspicious dependencies.
 * Do not deploy to production without explicit permission.
 
-8. VALIDATION
+7. VALIDATION
 
 After implementation:
 
@@ -114,7 +105,7 @@ Report:
 * Which packages were installed.
 * Whether the build passed.
 
-9. FINAL RULE
+8. FINAL RULE
 
 Work autonomously.
 
