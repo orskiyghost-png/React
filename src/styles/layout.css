@@ -8,6 +8,7 @@
 .section {
   padding-block: clamp(72px, 12vw, 160px);
   border-top: var(--rule);
+  scroll-margin-top: 84px;
 }
 
 .section__head {
@@ -43,7 +44,7 @@
 .section__lede {
   max-width: 52ch;
   margin-top: var(--space-6);
-  font-size: var(--text-body);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
   line-height: var(--leading-normal);
 }
 

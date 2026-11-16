@@ -95,7 +95,7 @@
   display: none;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 780px) {
   .header__bar {
     grid-template-columns: 1fr auto;
     min-height: 64px;

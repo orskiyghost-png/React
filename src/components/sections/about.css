@@ -23,11 +23,11 @@
   letter-spacing: -0.01em;
 }
 
-.about__signature {
+.about__text .about__signature {
   padding-top: var(--space-6);
   border-top: var(--rule);
-  font-size: var(--text-caption) !important;
-  letter-spacing: 0.12em !important;
+  font-size: var(--text-caption);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 

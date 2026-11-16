@@ -23,20 +23,23 @@ export function Contact() {
             дней.
           </p>
 
-          <ul className="contact__socials">
-            {socials.map((social) => (
-              <li key={social.label}>
-                <a
-                  className="contact__social"
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {social.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="contact__socials">
+            <p className="label">Соцсети</p>
+            <ul className="contact__social-list">
+              {socials.map((social) => (
+                <li key={social.label}>
+                  <a
+                    className="contact__social"
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {social.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <dl className="contact__meta">
             <div>
