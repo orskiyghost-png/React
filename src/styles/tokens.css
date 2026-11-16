@@ -1,0 +1,74 @@
+/*
+ * Design tokens. Source of truth: /design/tokens.md.
+ * Do not introduce local colors or fonts in components.
+ */
+
+:root {
+  /* Brand */
+  --color-primary: #ef3347;
+  --color-background: #ffffff;
+
+  /* Text */
+  --color-text: #ef3347;
+  --color-text-secondary: #ef3347;
+  --color-text-muted: #ef3347;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-hover: #fff5f5;
+
+  /* Borders */
+  --color-border: #ef3347;
+  --color-border-subtle: #ef3347;
+
+  /* Interactive */
+  --color-accent: #ef3347;
+  --color-button: #ef3347;
+  --color-button-text: #ffffff;
+
+  /* States */
+  --color-focus: #ef3347;
+  --color-selection: #ef3347;
+  --color-selection-text: #ffffff;
+
+  /* Typography */
+  --font-primary: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --text-display: clamp(3rem, 9vw, 8rem);
+  --text-h1: clamp(2.5rem, 7vw, 6rem);
+  --text-h2: clamp(2rem, 5vw, 4rem);
+  --text-h3: clamp(1.5rem, 3vw, 2.5rem);
+  --text-body: clamp(1rem, 1.5vw, 1.35rem);
+  --text-caption: 0.875rem;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  --leading-tight: 0.95;
+  --leading-snug: 1.15;
+  --leading-normal: 1.5;
+
+  /* Spacing */
+  --container-width: 1440px;
+  --page-gutter: clamp(20px, 4vw, 64px);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* Motion — CSS only for now, GSAP-ready. */
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 420ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Structure */
+  --rule: 1px solid var(--color-border);
+  --z-header: 100;
+}

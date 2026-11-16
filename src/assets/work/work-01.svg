@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Заглушка обложки первого проекта">
+  <rect width="1200" height="900" fill="#FFFFFF"/>
+  <path d="M0 900a450 450 0 0 1 900 0z" fill="#EF3347"/>
+  <g stroke="#EF3347" stroke-width="2">
+    <path d="M60 60h420"/>
+    <path d="M60 84h300"/>
+    <path d="M60 108h180"/>
+  </g>
+  <g stroke="#EF3347" stroke-width="1" opacity="0.55">
+    <path d="M500 900L1200 340"/>
+    <path d="M620 900L1200 462"/>
+    <path d="M740 900L1200 584"/>
+  </g>
+  <text x="60" y="720" font-family="Helvetica, Arial, sans-serif" font-size="220" font-weight="700" fill="#EF3347" letter-spacing="-10">01</text>
+</svg>

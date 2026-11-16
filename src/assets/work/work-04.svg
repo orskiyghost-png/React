@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Заглушка обложки четвёртого проекта">
+  <rect width="1200" height="900" fill="#FFF5F5"/>
+  <g fill="#EF3347">
+    <rect x="120" y="120" width="960" height="48"/>
+    <rect x="120" y="196" width="960" height="24"/>
+    <rect x="120" y="248" width="720" height="12"/>
+    <rect x="120" y="288" width="480" height="12"/>
+  </g>
+  <g fill="none" stroke="#EF3347" stroke-width="2">
+    <circle cx="860" cy="600" r="220"/>
+    <circle cx="860" cy="600" r="160"/>
+    <circle cx="860" cy="600" r="100"/>
+  </g>
+  <rect x="120" y="560" width="240" height="240" fill="#EF3347"/>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Заглушка обложки третьего проекта">
+  <rect width="1200" height="900" fill="#FFFFFF"/>
+  <g stroke="#EF3347" stroke-width="1">
+    <path d="M0 150h1200"/>
+    <path d="M0 300h1200"/>
+    <path d="M0 450h1200"/>
+    <path d="M0 600h1200"/>
+    <path d="M0 750h1200"/>
+    <path d="M150 0v900"/>
+    <path d="M450 0v900"/>
+    <path d="M750 0v900"/>
+    <path d="M1050 0v900"/>
+  </g>
+  <g fill="#EF3347">
+    <rect x="150" y="150" width="300" height="150"/>
+    <rect x="450" y="300" width="300" height="150"/>
+    <rect x="750" y="450" width="300" height="150"/>
+    <rect x="150" y="600" width="300" height="150"/>
+  </g>
+  <rect x="450" y="0" width="300" height="150" fill="#FFF5F5"/>
+</svg>
