@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--space-4);
   align-content: start;
-  color: var(--color-text);
+  color: var(--color-ink);
 }
 
 .tile__media {
@@ -37,6 +37,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (min-width: 480px) {
@@ -88,9 +89,27 @@
   font-size: var(--text-caption);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--color-ink);
   border-bottom: 1px solid currentColor;
   width: fit-content;
   padding-bottom: 2px;
+}
+
+.tile__cta::after {
+  content: "";
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin-left: 0.55em;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.tile:hover .tile__cta::after,
+.tile:focus-visible .tile__cta::after {
+  transform: rotate(45deg) translate(0.15em, -0.05em);
 }
 
 .tile--featured .tile__media,

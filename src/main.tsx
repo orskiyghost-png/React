@@ -12,6 +12,9 @@ if (!container) {
   throw new Error("Root element #root not found");
 }
 
+// Reveal-слой включается только при работающем JS.
+document.documentElement.classList.add("js");
+
 createRoot(container).render(
   <StrictMode>
     <App />

@@ -12,6 +12,8 @@
   --color-text: #ef3347;
   --color-text-secondary: #ef3347;
   --color-text-muted: #ef3347;
+  /* Body copy ink: same scarlet family, darker for 4.5:1 on white */
+  --color-ink: #c42135;
 
   /* Surfaces */
   --color-surface: #ffffff;
@@ -23,17 +25,17 @@
 
   /* Interactive */
   --color-accent: #ef3347;
-  --color-button: #ef3347;
+  --color-button: #d92a3e;
   --color-button-text: #ffffff;
 
   /* States */
   --color-focus: #ef3347;
-  --color-selection: #ef3347;
+  --color-selection: #c42135;
   --color-selection-text: #ffffff;
 
   /* Typography */
   --font-primary: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --text-display: clamp(3rem, 9vw, 8rem);
+  --text-display: clamp(3rem, 8vw, 7.25rem);
   --text-h1: clamp(2.5rem, 7vw, 6rem);
   --text-h2: clamp(2rem, 5vw, 4rem);
   --text-h3: clamp(1.5rem, 3vw, 2.5rem);
@@ -61,11 +63,13 @@
   --space-16: 64px;
   --space-24: 96px;
 
-  /* Motion — CSS only for now, GSAP-ready. */
+  /* Motion */
   --duration-fast: 150ms;
   --duration-base: 240ms;
   --duration-slow: 420ms;
+  --duration-enter: 620ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-quart: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   /* Structure */

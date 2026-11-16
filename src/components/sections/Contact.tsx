@@ -35,7 +35,7 @@ export function Contact() {
           </p>
 
           <div className="contact__socials">
-            <p className="label">Соцсети</p>
+            <p className="label">Ссылки</p>
             <ul className="contact__social-list">
               {socials.map((social) => (
                 <li key={social.label}>

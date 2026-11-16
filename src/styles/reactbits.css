@@ -67,8 +67,17 @@
   padding: calc(64px + 1.5em) var(--page-gutter) var(--space-12);
 }
 
+.sm-scope .site-menu .sm-toggle-textWrap {
+  width: 6.5em;
+  min-width: 6.5em;
+}
+
 .sm-scope .site-menu .sm-toggle {
-  font-size: var(--text-caption);
+  min-height: 44px;
+  padding: 12px 0 12px 12px;
+  margin-right: -12px;
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -83,12 +92,27 @@
   flex: 0 0 16px;
 }
 
+.sm-scope .site-menu .sm-panel-inner {
+  gap: 0.25rem;
+}
+
+.sm-scope .site-menu .sm-panel-list {
+  gap: 0.15rem;
+}
+
 .sm-scope .site-menu .sm-panel-item {
   color: var(--color-background);
   font-size: clamp(2rem, 9vw, 3.5rem);
   font-weight: var(--weight-bold);
+  line-height: 0.98;
   letter-spacing: -0.02em;
+  text-transform: none;
   padding-right: 1.8em;
+}
+
+.sm-scope .site-menu .sm-panel-item:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: 4px;
 }
 
 .sm-scope .site-menu .sm-panel-item:hover {
@@ -99,28 +123,37 @@
 }
 
 .sm-scope .site-menu .sm-panel-list[data-numbering] .sm-panel-item::after {
-  font-size: var(--text-caption);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
   letter-spacing: 0.12em;
   color: var(--color-background);
-  top: 0.2em;
-  right: 0.2em;
+  top: 0.15em;
+  right: 0.1em;
 }
 
 .sm-scope .site-menu .sm-socials-title {
   color: var(--color-background);
-  font-size: var(--text-caption);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .sm-scope .site-menu .sm-socials-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--color-background);
-  font-size: var(--text-body);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
+  padding-block: var(--space-2);
 }
 
 .sm-scope .site-menu .sm-socials-link:hover {
   color: var(--color-background);
-  opacity: 0.6;
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 
 /* Меню включается только на мобильных: на десктопе работает навигация в шапке */

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
 import { About } from "./components/sections/About";
@@ -10,6 +12,18 @@ import { useReveal } from "./lib/useReveal";
 
 export default function App() {
   useReveal();
+
+  // Позиции ScrollTrigger зависят от шрифтов и картинок: пересчитываем после загрузки.
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    const timers = [window.setTimeout(refresh, 300), window.setTimeout(refresh, 1200)];
+    window.addEventListener("load", refresh);
+    void document.fonts?.ready.then(refresh).catch(() => {});
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      window.removeEventListener("load", refresh);
+    };
+  }, []);
 
   return (
     <>
@@ -31,12 +45,12 @@ export default function App() {
         className="gradual-blur-top"
         position="top"
         target="page"
-        height={96}
-        strength={2}
-        layers={4}
+        height={72}
+        strength={1.2}
+        layers={3}
         curve="bezier"
         exponential
-        opacity={0.6}
+        opacity={0.4}
         zIndex={90}
         autoHide
       />

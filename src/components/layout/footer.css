@@ -41,6 +41,9 @@
 
 .footer__social,
 .footer__top {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: var(--text-caption);
   letter-spacing: 0.12em;
   text-transform: uppercase;

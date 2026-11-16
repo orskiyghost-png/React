@@ -12,3 +12,6 @@ dist-ssr
 
 # build info
 *.tsbuildinfo
+
+# skill reference assets (~38 MB, not needed for the site)
+.agents/skills/*/assets/

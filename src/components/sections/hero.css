@@ -2,6 +2,20 @@
   padding-block: clamp(40px, 7vw, 96px) clamp(64px, 10vw, 140px);
 }
 
+/* Одно появление на загрузке: мета, заголовок, низ героя. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero [data-enter] {
+    animation: hero-enter var(--duration-enter) var(--ease-out-quart) var(--enter-delay, 0ms) both;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
@@ -31,7 +45,8 @@
 .hero__title {
   max-width: 18ch;
   margin-block: clamp(40px, 7vw, 96px) clamp(40px, 6vw, 80px);
-  font-size: var(--text-display);
+  /* 12vw не даёт длинному слову выйти за 320 px, --text-display держит потолок. */
+  font-size: min(12vw, var(--text-display));
   font-weight: var(--weight-bold);
   line-height: 0.92;
   letter-spacing: -0.045em;

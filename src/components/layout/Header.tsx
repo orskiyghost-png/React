@@ -80,7 +80,7 @@ export function Header() {
     requestAnimationFrame(() => {
       document
         .querySelector<HTMLElement>(".site-menu .sm-panel-item")
-        ?.focus();
+        ?.focus({ preventScroll: true });
     });
   }, [lockPage]);
 
@@ -122,9 +122,9 @@ export function Header() {
     <>
       <header className="header">
         <div className="shell header__bar">
-          <a className="header__brand" href="#top">
+          <a className="header__brand" href="#top" aria-label={`${profile.name}, на главную`}>
             <LogoMark />
-            <span className="header__wordmark">React</span>
+            <span className="header__wordmark">Орский</span>
           </a>
 
           <nav className="header__nav" aria-label="Основная навигация">

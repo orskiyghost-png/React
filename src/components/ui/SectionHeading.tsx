@@ -13,14 +13,23 @@ export function SectionHeading({ index, title, lede }: SectionHeadingProps) {
       <p className="section__index">({index})</p>
       <div>
         <ScrollReveal
-          effect="flip"
+          effect="rise"
           mode="enter"
           splitBy="words"
+          duration={0.65}
+          stagger={0.04}
+          baseOpacity={0}
+          baseRotation={0}
+          enableBlur={false}
           containerClassName="section__title"
         >
           {title}
         </ScrollReveal>
-        {lede ? <p className="section__lede">{lede}</p> : null}
+        {lede ? (
+          <p className="section__lede" data-reveal>
+            {lede}
+          </p>
+        ) : null}
       </div>
     </div>
   );

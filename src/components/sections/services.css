@@ -48,6 +48,7 @@
   font-size: var(--text-caption);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 .service__items li::before {

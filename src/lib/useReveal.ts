@@ -21,6 +21,21 @@ export function useReveal() {
       return;
     }
 
+    // Лёгкая очередь внутри группы: 0, 60, 120, 180 мс.
+    const groupIndex = new Map<Element, number>();
+    for (const target of targets) {
+      const siblings = target.parentElement
+        ? Array.from(target.parentElement.children).filter((node) =>
+            targets.includes(node as HTMLElement),
+          )
+        : [target];
+      groupIndex.set(target, Math.min(siblings.indexOf(target), 3));
+    }
+
+    for (const target of targets) {
+      target.style.setProperty("--reveal-delay", `${(groupIndex.get(target) ?? 0) * 60}ms`);
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
