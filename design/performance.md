@@ -1,5 +1,8 @@
 PERFORMANCE SYSTEM — REACT
 
+Sections (offset:line): 1 PRIORITY=6 | 2 RENDERING=14 | 3 IMAGES=24 | 4 VIDEO=33 | 5 ANIMATIONS=41 | 6 MOBILE=59 | 7 TESTING=74
+
+
 1. PRIORITY
 
 Performance is more important than decorative effects.

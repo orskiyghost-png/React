@@ -14,6 +14,7 @@ All documentation lives in /design/ and nowhere else.
 * Do not copy whole documentation files into prompts or source code.
 * Keep documentation concise and free of duplication.
 * Follow existing project architecture.
+* Each design file starts with `Sections (offset:line): ...`. Read only the needed range with offset/limit, not the whole file.
 
 2. DOCUMENTATION ROUTING
 

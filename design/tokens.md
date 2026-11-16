@@ -1,5 +1,8 @@
 DESIGN TOKENS — REACT
 
+Sections (offset:line): 1 COLOR PALETTE=12 | 2 TYPOGRAPHY=55 | 3 SPACING=82 | 4 LAYOUT=100 | 5 RESPONSIVE TYPOGRAPHY=121 | 6 DESIGN CONSISTENCY=134
+
+
 Version: 1.0
 
 This file defines the visual identity of the entire React project.
