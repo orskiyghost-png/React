@@ -1,0 +1,56 @@
+.about__grid {
+  display: grid;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+@media (min-width: 900px) {
+  .about__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--space-24);
+    align-items: start;
+  }
+}
+
+.about__text {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 62ch;
+}
+
+.about__text p {
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.about__signature {
+  padding-top: var(--space-6);
+  border-top: var(--rule);
+  font-size: var(--text-caption) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+}
+
+.about__facts {
+  display: grid;
+  align-content: start;
+}
+
+.about__fact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-top: var(--rule);
+}
+
+.about__fact:last-child {
+  border-bottom: var(--rule);
+}
+
+.about__fact dd {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-snug);
+}

@@ -1,13 +1,10 @@
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
-import { SectionHeading } from "./components/ui/SectionHeading";
-
-const sections = [
-  { id: "work", index: "02", title: "Избранные работы" },
-  { id: "about", index: "03", title: "Обо мне" },
-  { id: "services", index: "04", title: "Услуги и навыки" },
-  { id: "contact", index: "05", title: "Контакты" },
-] as const;
+import { About } from "./components/sections/About";
+import { Contact } from "./components/sections/Contact";
+import { Hero } from "./components/sections/Hero";
+import { SelectedWork } from "./components/sections/SelectedWork";
+import { Services } from "./components/sections/Services";
 
 export default function App() {
   return (
@@ -17,18 +14,11 @@ export default function App() {
       </a>
       <Header />
       <main id="main">
-        <section className="section hero" id="top">
-          <div className="shell">
-            <SectionHeading index="01" title="Hero" />
-          </div>
-        </section>
-        {sections.map((section) => (
-          <section className="section" id={section.id} key={section.id}>
-            <div className="shell">
-              <SectionHeading index={section.index} title={section.title} />
-            </div>
-          </section>
-        ))}
+        <Hero />
+        <SelectedWork />
+        <About />
+        <Services />
+        <Contact />
       </main>
       <Footer />
     </>
